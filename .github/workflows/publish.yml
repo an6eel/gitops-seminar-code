@@ -39,7 +39,7 @@ jobs:
 
           cd gitops-seminar-infra/resources/apps/api/$REPO_PATH
           docker run --rm -v ${PWD}:/workdir mikefarah/yq:3.2.1 yq write --inplace --verbose values.yaml api.image.tag $GITHUB_SHA
-          git commit -am "Update code" && git push origin master
+          git commit -am "Update code" && git push origin main
 
 
 

@@ -29,7 +29,7 @@ jobs:
       - name: Notify infra repo update
         run: |
           git clone --single-branch --branch main https://github.com/an6eel/gitops-seminar-infra.git
-          git remote add infra https://x-access-token:${{ secrets.GITOPS_TOKEN }}@github.com/an6eel/gitops-seminar-infra.git
+          git remote set-url --push origin https://an6eel:$GITOPS_TOKEN@github.com/an6eel/gitops-seminar-infra
           git config --global user.name "an6eel"
           git config --global user.email "agarciamal1997@gmail.com"
           case "${GITHUB_REF##*/}" in
@@ -39,7 +39,7 @@ jobs:
           esac
           cd gitops-seminar-infra/resources/apps/api/$REPO_PATH
           docker run --rm -v ${PWD}:/workdir mikefarah/yq:3.2.1 yq write --inplace --verbose values.yaml api.image.tag $GITHUB_SHA
-          git commit -am "Update code" && git push infra main
+          git commit -am "Update code" && git push origin main
 
 
 

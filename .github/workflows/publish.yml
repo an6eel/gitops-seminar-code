@@ -27,7 +27,7 @@ jobs:
 
       - name: Notify infra repo update
         run: |
-          git clone --single-branch --branch master https://an6eel:$GITHUB_TOKEN@github.com/an6eel/gitops-seminar-infra
+          git clone --single-branch --branch main https://an6eel:$GITHUB_TOKEN@github.com/an6eel/gitops-seminar-infra
           case "${GITHUB_REF##*/}" in
             main) export REPO_PATH=prod ;;
             preprod) export REPO_PATH=preprod ;;

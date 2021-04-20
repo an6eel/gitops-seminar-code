@@ -29,6 +29,7 @@ jobs:
       - name: Notify infra repo update
         run: |
           git clone --single-branch --branch main https://an6eel:$GITHUB_TOKEN@github.com/an6eel/gitops-seminar-infra
+          git remote add origin https://an6eel:$GITHUB_TOKEN@github.com/an6eel/gitops-seminar-infra
           git config --global user.name "an6eel"
           git config --global user.email "agarciamal1997@gmail.com"
           case "${GITHUB_REF##*/}" in

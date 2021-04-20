@@ -1,9 +1,11 @@
-name: Prod deployment
+name: Deployment
 
 on:
   push:
     branches:
       - main
+      - staging
+      - preprod
 jobs:
   push:
     runs-on: ubuntu-latest
@@ -11,10 +13,10 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Build image
-        run: docker build . -t an6eel/gitops-seminar-code:prod
+        run: docker build . -t an6eel/gitops-seminar-code:${{ env.GITHUB_SHA }}
 
       - name: Log into registry
         run: docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_PASSWORD }}
 
       - name: Push image
-        run: docker push an6eel/gitops-seminar-code:prod
+        run: docker push an6eel/gitops-seminar-code:${{ env.GITHUB_SHA }}

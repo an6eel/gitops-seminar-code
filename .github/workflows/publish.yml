@@ -28,7 +28,7 @@ jobs:
         uses: actions/checkout@master
         with:
           repository: an6eel/gitops-seminar-infra
-          token: ${{ secrets.$GITOPS_TOKEN }}
+          token: ${{ secrets.GITOPS_TOKEN }}
           path: ./infra
 
       - name: Notify infra repo update

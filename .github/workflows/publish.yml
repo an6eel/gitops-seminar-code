@@ -20,11 +20,12 @@ jobs:
 
       - name: Push image
         run: docker push an6eel/gitops-seminar-code:$GITHUB_SHA
+
   notify-update:
     needs: publish-image
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Project B
+      - name: Checkout Infra Project
         uses: actions/checkout@master
         with:
           repository: an6eel/gitops-seminar-infra
